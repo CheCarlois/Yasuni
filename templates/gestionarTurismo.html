@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Información Turística</title>
+    <!-- Usar el CSS de actividades y un CSS adicional para el CRUD -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/actividades.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/crud.css') }}">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <p>Línea Directa: {} | WhatsApp: {}</p>
+        </div>
+        <div class="logo-nav-container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('pagina_actividades') }}">Regresar al Panel</a></li>
+                    <li><a href="{{ url_for('home') }}">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Gestionar Información Turística</h1>
+        <section class="crud-section">
+            <div class="crud-form">
+                <h2>Añadir o Editar Información Turística</h2>
+                <form id="formTurismo">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="categoria">Categoría:</label>
+                    <input type="text" id="categoria" name="categoria" required>
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required></textarea>
+
+                    <label for="imagenURL">URL de la Imagen:</label>
+                    <input type="text" id="imagenURL" name="imagenURL" required>
+
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+            <div class="crud-list">
+                <h2>Lista de Información Turística</h2>
+                <table id="tablaTurismo">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoría</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas de la tabla se generarán dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Sistema de Administración de página del Yasuni</p>
+    </footer>
+    <!-- Asegurarse de que el archivo JavaScript esté referenciado correctamente -->
+    <script src="{{ url_for('static', filename='programacion/gestionarTurismo.js') }}"></script>
+</body>
+</html>

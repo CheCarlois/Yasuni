@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Yasuni</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/paginaPrincipal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tarjetas.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animacionesMasInformacion.css') }}"> <!-- Enlace al CSS para animaciones -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('quienesSomos') }}">Quiénes Somos</a></li>
+                <li><a href="{{ url_for('masInformacion') }}">Más Información</a></li>
+                <li><a href="{{ url_for('login') }}">Ingresar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <br>
+        <!-- Sección sobre la Historia de Yasuni -->
+        <section id="Historia" class="section fade-in">
+            <h2>Nuestra Historia</h2>
+            <p>La Reserva Ecológica Yasuni fue establecida en 1979 y cubre un área de aproximadamente 9,820 kilómetros cuadrados en la región amazónica de Ecuador. 
+            Desde su creación, Yasuni ha sido un símbolo de la lucha por la conservación de la biodiversidad y el respeto a las culturas indígenas.</p>
+            <p>En 1989, la UNESCO declaró a Yasuni como Reserva de la Biosfera, reconociendo su importancia global y la necesidad de su protección continua.</p>
+        </section>
+
+        <!-- Sección sobre la Comunidad Waorani -->
+        <section id="ComunidadWaorani" class="section slide-in-left">
+            <h2>La Comunidad Waorani</h2>
+            <p>Los Waorani son una de las comunidades indígenas que han habitado la región de Yasuni por generaciones. 
+            Son conocidos por su profundo conocimiento de la selva y su habilidad para vivir en armonía con la naturaleza. 
+            A pesar de los desafíos modernos, los Waorani han mantenido su lengua, tradiciones y modo de vida.</p>
+            <p>El pueblo Waorani ha jugado un papel fundamental en la defensa de Yasuni contra la explotación petrolera y la deforestación. 
+            Su compromiso con la preservación de su hogar natural ha inspirado a organizaciones de todo el mundo a unirse a su causa.</p>
+            <p>A través de alianzas con ONGs y el gobierno ecuatoriano, los Waorani participan en proyectos de ecoturismo y conservación que buscan proteger la biodiversidad de Yasuni mientras fortalecen su economía local.</p>
+        </section>
+
+        <!-- Sección para mostrar las tarjetas dinámicamente -->
+        <section id="Nacionalidades" class="section slide-in-right">
+            <h2>Conoce nuestras Nacionalidades</h2>
+            <div id="nacionalidades-container" class="card-container">
+                <!-- Las tarjetas se generarán aquí dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <script src="programacion/dynamicNacionalidades.js"></script> <!-- Archivo JS para manejar el contenido dinámico -->
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yasuni - Una Reserva Ecológica</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/paginaPrincipal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/animaciones.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Referencia correcta a la imagen usando url_for -->
+            <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+        </div>
+        <nav>
+            <ul>
+                <!-- Enlaces utilizando url_for -->
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('quienesSomos') }}">Quiénes Somos</a></li>
+                <li><a href="{{ url_for('masInformacion') }}">Más Información</a></li>
+                <li><a href="{{ url_for('login') }}">Ingresar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="video-container">
+                <!-- Referencia correcta al video usando url_for -->
+                <video autoplay muted loop id="background-video">
+                    <source src="{{ url_for('static', filename='videos/yasuni.mp4') }}" type="video/mp4">
+                    Tu navegador no soporta este tipo de video.
+                </video>
+            </div>
+        </section>
+        <section id="Inicio" class="section fade-in-up delay-3">
+            <h2>Inicio</h2>
+            <p>Bienvenido a la página oficial de la Reserva Ecológica Yasuni.</p>
+        </section>
+        <section id="Biodiversidad" class="section fade-in-up delay-4">
+            <h2>Biodiversidad</h2>
+            <p>
+                Yasuni es una de las áreas con mayor biodiversidad del planeta.
+                Alberga miles de especies de plantas, animales y microorganismos,
+                muchas de las cuales no se encuentran en ningún otro lugar del mundo.
+            </p>
+        </section>
+        <section id="Importancia" class="section fade-in-up delay-5">
+            <h2>Importancia de Yasuni</h2>
+            <p>
+                La Reserva Ecológica Yasuni no solo es crucial por su biodiversidad,
+                sino también por su papel en la regulación del clima global y como
+                hogar de comunidades indígenas que han vivido en armonía con la naturaleza
+                durante siglos.
+            </p>
+        </section>
+        <section id="Conservacion" class="section fade-in-up delay-6">
+            <h2>Esfuerzos de Conservación</h2>
+            <p>
+                Diversas organizaciones y gobiernos están trabajando arduamente para proteger
+                Yasuni de amenazas como la deforestación y la explotación de recursos naturales.
+                Descubre cómo puedes apoyar estos esfuerzos y contribuir a la conservación de este
+                valioso ecosistema.
+            </p>
+        </section>
+    </main>
+    <!-- Referencia correcta al script usando url_for -->
+    <script src="{{ url_for('static', filename='programacion/animacionInicio.js') }}"></script>
+</body>
+</html>

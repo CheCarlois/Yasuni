@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Información - Yasuni</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/paginaPrincipal.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tarjetas.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animacionesMasInformacion.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('quienesSomos') }}">Quiénes Somos</a></li>
+                <li><a href="{{ url_for('masInformacion') }}">Más Información</a></li>
+                <li><a href="{{ url_for('login') }}">Ingresar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <br/>
+        <section id="MasInformacion" class="section fade-in">
+            <h2>Más Información</h2>
+            <p>Descubre más sobre los esfuerzos de conservación y cómo puedes ayudar a proteger Yasuni.</p>
+        </section>
+
+        <!-- Otras secciones con animaciones -->
+        <section id="Importancia" class="section slide-in-left">
+            <h2>Importancia Global de Yasuni</h2>
+            <p>La Reserva Ecológica Yasuni es considerada uno de los lugares más biodiversos del planeta...</p>
+        </section>
+
+        <section id="Biodiversidad" class="section slide-in-right">
+            <h2>Biodiversidad Inigualable</h2>
+            <p>En Yasuni se encuentran más de 1,300 especies de árboles y arbustos por hectárea...</p>
+            <ul>
+                <li>Especies en peligro de extinción protegidas en Yasuni</li>
+                <li>El papel crucial de Yasuni en la conservación del jaguar</li>
+                <li>Descubrimientos recientes de nuevas especies en la región</li>
+            </ul>
+        </section>
+
+        <section id="Conservacion" class="section fade-in">
+            <h2>Esfuerzos de Conservación</h2>
+            <p>Diversas organizaciones, tanto locales como internacionales, están involucradas en la protección de Yasuni...</p>
+        </section>
+
+        <section id="TurismoSostenible" class="section zoom-in">
+            <h2>Turismo Sostenible</h2>
+            <p>El turismo en Yasuni está diseñado para ser sostenible y respetuoso con el entorno...</p>
+        </section>
+
+        <section id="ComoAyudar" class="section fade-in">
+            <h2>Cómo Puedes Ayudar</h2>
+            <p>La preservación de Yasuni depende de la acción colectiva. Aquí hay algunas maneras en que puedes contribuir:</p>
+            <ul>
+                <li>Apoyar a las <a href="#organizaciones">organizaciones de conservación</a> que trabajan en Yasuni.</li>
+                <li>Optar por productos y servicios que respeten el medio ambiente.</li>
+                <li>Participar en campañas de concienciación y educación sobre la importancia de Yasuni.</li>
+            </ul>
+        </section>
+        <section id="tarjetasMasInfo" class="section fade-in">
+            <!-- Sección para mostrar las tarjetas de información turística -->
+            <section id="Turismo" class="section fade-in">
+                <h2>Conoce Nuestras Actividades Turísticas</h2>
+                <div id="turismo-container" class="card-container">
+                    <!-- Las tarjetas se generarán aquí dinámicamente -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="programacion/dynamicTurismo.js"></script> <!-- Archivo JS para manejar el contenido dinámico -->
+</body>
+</html>

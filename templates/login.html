@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar - Yasuni</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienesSomos.html">Quiénes Somos</a></li>
+                <li><a href="masInformacion.html">Más Información</a></li>
+                <li><a href="login.html">Ingresar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="login" class="section fade-in-up delay-3">
+            <h2>Ingresar</h2>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Ingresar</button>
+                </div>
+                <p id="error" style="color:red; display:none;">Usuario o contraseña incorrectos.</p>
+            </form>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Información de la Nacionalidad</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/actividades.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/crud.css') }}">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <p>Línea Directa: [Número de Línea Directa] | WhatsApp: [Número de WhatsApp]</p>
+        </div>
+        <div class="logo-nav-container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('pagina_actividades') }}">Regresar al Panel</a></li>
+                    <li><a href="{{ url_for('home') }}">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Gestionar Información de la Nacionalidad</h1>
+        <section class="crud-section">
+            <div class="crud-form">
+                <h2>Añadir o Editar Información</h2>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <div>
+                        {{ form.titulo.label }}<br>
+                        {{ form.titulo(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.categoria.label }}<br>
+                        {{ form.categoria(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.descripcion.label }}<br>
+                        {{ form.descripcion(cols=40, rows=4) }}
+                    </div>
+                    <div>
+                        {{ form.imagenURL.label }}<br>
+                        {{ form.imagenURL(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.submit(class_="button") }}
+                    </div>
+                </form>
+            </div>
+            <div class="crud-list">
+                <h2>Lista de Nacionalidades</h2>
+                <table id="tablaNacionalidades">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoría</th>
+                            <th>Descripción</th>
+                            <th>Imagen</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for nacionalidad in nacionalidades %}
+                        <tr>
+                            <td>{{ nacionalidad.titulo }}</td>
+                            <td>{{ nacionalidad.categoria_codigo }}</td>
+                            <td>{{ nacionalidad.descripcion }}</td>
+                            <td><img src="{{ nacionalidad.url_imagen }}" alt="Imagen de {{ nacionalidad.titulo }}" style="width:100px;"></td>
+                            <td>
+                                <button class="button edit">Editar</button>
+                            </td>
+                            <td>
+                                <button class="button delete">Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Sistema de Administración de página del Yasuni</p>
+    </footer>
+    <script src="{{ url_for('static', filename='programacion/gestionarNacionalidad.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividades - Yasuni</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/actividades.css') }}">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <p>Línea Directa: [Número de Línea Directa] | WhatsApp: [Número de WhatsApp]</p>
+        </div>
+        <div class="logo-nav-container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/Yasuni.png') }}" alt="Logo de la Reserva Ecológica Yasuni">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Tutorial de uso</a></li>
+                    <li><a href="{{ url_for('home') }}">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Bienvenido, [Nombre del Usuario]</h1>
+        <section class="activities">
+            <div class="activity-card pink">
+                <h2>Gestionar información de la nacionalidad</h2>
+                <!-- Uso de la ruta Flask para la redirección -->
+                <a href="{{ url_for('informacion_nacionalidad') }}">Ir a Gestionar información nacionalidad</a>
+            </div>
+            <div class="activity-card yellow">
+                <h2>Gestionar información compartida</h2>
+                <!-- Se asume que habrá una ruta similar para esta función en Flask -->
+                <a href="{{ url_for('informacion_turismo') }}">Ir a Gestionar información turística</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Sistema de Administración de página del Yasuni</p>
+    </footer>
+</body>
+</html>
