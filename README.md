@@ -1,5 +1,3 @@
-# Yasuni
-El proyecto "Yasuni" es una plataforma web diseñada para gestionar la información de las diferentes nacionalidades de la Reserva Ecológica Yasuni. Este sistema permite a los administradores crear, leer, actualizar y eliminar información sobre las diversas nacionalidades que habitan en la reserva
 # Proyecto Yasuni
 
 Este es un proyecto para gestionar la información de diferentes categorías y nacionalidades de una reserva ecológica, desarrollado con Flask, WTForms, y siguiendo el patrón DAO. Este sistema permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en una interfaz web.
@@ -99,7 +97,7 @@ CREATE TABLE CATEGORIASNACIONALIDADES (
    CATXNACNOMBRE VARCHAR(255) NOT NULL,
    CONSTRAINT PK_CATEGORIASNACIONALIDADES PRIMARY KEY (CATXNACCODIGO)
 );
-```
+
 
 ### Otras tablas necesarias:
 
@@ -158,6 +156,7 @@ alter table TURISTICAS
    add constraint FK_TURISTIC_CATETURIX_CATEGORI foreign key (CATXTURCODIGO)
       references CATEGORIASTURISTICAS (CATXTURCODIGO)
       on delete restrict on update restrict;
+```
 
 ```
 
