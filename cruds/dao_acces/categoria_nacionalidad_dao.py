@@ -1,27 +1,25 @@
-from cruds.conexion import Conexion
-from cruds.categoria_nacionalidad import CategoriaNacionalidad
+from cruds.dao_acces.conexion import Conexion
+
 
 class CategoriaNacionalidadDAO:
     SELECCIONAR = 'SELECT * FROM CATEGORIASNACIONALIDADES'
-    INSERTAR = 'INSERT INTO CATEGORIASNACIONALIDADES (CATXNACCODIGO, CATXNACNOMBRE) VALUES (%s, %s)'
+    INSERTAR = 'INSERT INTO NACIONALIDADES (CATXNACCODIGO, NACTITULO, NACDESCRIPCION, NACURLIMAGEN, NACFECHACREACION) VALUES (%s, %s, %s, %s, %s)'
     ACTUALIZAR = 'UPDATE CATEGORIASNACIONALIDADES SET CATXNACNOMBRE=%s WHERE CATXNACCODIGO=%s'
     ELIMINAR = 'DELETE FROM CATEGORIASNACIONALIDADES WHERE CATXNACCODIGO=%s'
 
     @classmethod
-    def seleccionar(cls):
+    def insertar(cls, nacionalidad):
         conexion = None
         try:
             conexion = Conexion.obtener_conexion()
             cursor = conexion.cursor()
-            cursor.execute(cls.SELECCIONAR)
-            registros = cursor.fetchall()
-            categorias = []
-            for registro in registros:
-                categoria = CategoriaNacionalidad(registro[0], registro[1])
-                categorias.append(categoria)
-            return categorias
+            valores = (nacionalidad.categoria, nacionalidad.titulo, nacionalidad.descripcion,
+                       nacionalidad.url_imagen, nacionalidad.fecha_creacion)
+            cursor.execute(cls.INSERTAR, valores)
+            conexion.commit()
+            return cursor.rowcount
         except Exception as e:
-            print(f'Ocurrió un error al seleccionar categorías: {e}')
+            print(f'Ocurrió un error al insertar nacionalidad: {e}')
         finally:
             if conexion is not None:
                 cursor.close()

@@ -1,9 +1,8 @@
 from flask import Flask, render_template, jsonify, request, flash, redirect, url_for
 from crudNacionalidades import get_nacionalidades, add_nacionalidad, update_nacionalidad, delete_nacionalidad
-from cruds.NacionalidadForm import NacionalidadForm
-from cruds.categoria_nacionalidad_dao import CategoriaNacionalidadDAO
-from cruds.nacionalidad import Nacionalidad
-from cruds.nacionalidad_dao import NacionalidadDAO
+from cruds.logica_aplicacion.NacionalidadForm import NacionalidadForm
+from cruds.modelos.nacionalidad import Nacionalidad
+from cruds.dao_acces.nacionalidad_dao import NacionalidadDAO
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a2b9c8d4e6f1g7h5i3j2k4l6m5n7o8p9'
 

@@ -1,9 +1,9 @@
-from cruds.conexion import Conexion
-from cruds.nacionalidad import Nacionalidad
+from cruds.dao_acces.conexion import Conexion
+from cruds.modelos.nacionalidad import Nacionalidad
 
 class NacionalidadDAO:
     SELECCIONAR = 'SELECT * FROM NACIONALIDADES'
-    INSERTAR = 'INSERT INTO NACIONALIDADES (NACCODIGO, CATXNACCODIGO, NACTITULO, NACDESCRIPCION, NACURLIMAGEN, NACFECHACREACION) VALUES (%s, %s, %s, %s, %s, %s)'
+    INSERTAR = 'INSERT INTO NACIONALIDADES (CATXNACCODIGO, NACTITULO, NACDESCRIPCION, NACURLIMAGEN, NACFECHACREACION) VALUES (%s, %s, %s, %s, %s)'
     ACTUALIZAR = 'UPDATE NACIONALIDADES SET CATXNACCODIGO=%s, NACTITULO=%s, NACDESCRIPCION=%s, NACURLIMAGEN=%s, NACFECHACREACION=%s WHERE NACCODIGO=%s'
     ELIMINAR = 'DELETE FROM NACIONALIDADES WHERE NACCODIGO=%s'
 
@@ -37,7 +37,7 @@ class NacionalidadDAO:
             conexion = Conexion.obtener_conexion()
             cursor = conexion.cursor()
             valores = (
-                nacionalidad.codigo, nacionalidad.categoria_codigo,
+                nacionalidad.categoria_codigo,
                 nacionalidad.titulo, nacionalidad.descripcion,
                 nacionalidad.url_imagen, nacionalidad.fecha_creacion
             )
