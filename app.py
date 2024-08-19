@@ -3,6 +3,9 @@ from crudNacionalidades import get_nacionalidades, add_nacionalidad, update_naci
 from cruds.logica_aplicacion.NacionalidadForm import NacionalidadForm
 from cruds.modelos.nacionalidad import Nacionalidad
 from cruds.dao_acces.nacionalidad_dao import NacionalidadDAO
+from cruds.modelos.Turisticas import Turisticas
+from cruds.dao_acces.turistica_dao import TuristicaDAO
+from cruds.logica_aplicacion.TuristicaForm import TuristicaForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a2b9c8d4e6f1g7h5i3j2k4l6m5n7o8p9'
 
@@ -22,9 +25,6 @@ def masInformacion():
 def pagina_actividades():
     return render_template('paginaActividades.html')
 
-@app.route('/paginaActividades/infoTuristica')
-def informacion_turismo():
-    return render_template('gestionarTurismo.html')
 
 @app.route('/login')
 def login():
@@ -74,6 +74,27 @@ def informacion_nacionalidad():
         # Obtener las nacionalidades existentes para mostrarlas en la tabla
         nacionalidades = NacionalidadDAO.seleccionar()
         return render_template('gestionarNacionalidad.html', form=form, nacionalidades=nacionalidades)
+
+
+@app.route('/paginaActividades/infoTuristica', methods=['GET', 'POST'])
+def informacion_turismo():
+    form = NacionalidadForm()
+    if form.validate_on_submit():
+        # Lógica para procesar los datos del formulario
+        nueva_turistico = Turisticas(
+            categoria_codigo=form.categoria.data,
+            titulo=form.titulo.data,
+            descripcion=form.descripcion.data,
+            url_imagen=form.imagenURL.data,
+            fecha_creacion='2024-08-15'  # O la fecha actual
+        )
+        TuristicaDAO.insertar(nueva_turistico)
+        flash('Información de turismo guardada con éxito!')
+        return redirect(url_for('informacion_turismo'))
+    else:
+        # Obtener las nacionalidades existentes para mostrarlas en la tabla
+        turisticos = TuristicaDAO.seleccionar()
+        return render_template('gestionarTurismo.html', form=form, turisticos=turisticos)
 
 
 if __name__ == '__main__':

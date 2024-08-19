@@ -29,37 +29,59 @@
         <h1>Gestionar Información Turística</h1>
         <section class="crud-section">
             <div class="crud-form">
-                <h2>Añadir o Editar Información Turística</h2>
-                <form id="formTurismo">
-                    <label for="titulo">Título:</label>
-                    <input type="text" id="titulo" name="titulo" required>
+                <h2>Añadir o Editar Información</h2>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
 
-                    <label for="categoria">Categoría:</label>
-                    <input type="text" id="categoria" name="categoria" required>
-
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" required></textarea>
-
-                    <label for="imagenURL">URL de la Imagen:</label>
-                    <input type="text" id="imagenURL" name="imagenURL" required>
-
-                    <button type="submit">Guardar</button>
+                    <div>
+                        {{ form.titulo.label }}<br>
+                        {{ form.titulo(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.categoria.label }}<br>
+                        {{ form.categoria(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.descripcion.label }}<br>
+                        {{ form.descripcion(cols=40, rows=4) }}
+                    </div>
+                    <div>
+                        {{ form.imagenURL.label }}<br>
+                        {{ form.imagenURL(size=40) }}
+                    </div>
+                    <div>
+                        {{ form.submit(class_="button") }}
+                    </div>
                 </form>
             </div>
             <div class="crud-list">
                 <h2>Lista de Información Turística</h2>
-                <table id="tablaTurismo">
+                <table id="tablaNacionalidades">
                     <thead>
                         <tr>
                             <th>Título</th>
                             <th>Categoría</th>
                             <th>Descripción</th>
                             <th>Imagen</th>
-                            <th>Acciones</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de la tabla se generarán dinámicamente -->
+                        {% for turistico in turisticos %}
+                        <tr>
+                            <td>{{ turistico.titulo }}</td>
+                            <td>{{ turistico.categoria_codigo }}</td>
+                            <td>{{ turistico.descripcion }}</td>
+                            <td><img src="{{ turistico.url_imagen }}" alt="Imagen de {{ turistico.titulo }}" style="width:100px;"></td>
+                            <td>
+                                <button class="button edit">Editar</button>
+                            </td>
+                            <td>
+                                <button class="button delete">Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
